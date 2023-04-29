@@ -18,3 +18,11 @@ http://localhost/
 ```sh
 $ docker ps
 ```
+
+## Run an interactive terminal on ubuntu:
+```sh
+# The -t flag tells docker to open a terminal for us,
+# the -i flag makes it interactive
+$ docker run -it ubuntu 
+```
+
