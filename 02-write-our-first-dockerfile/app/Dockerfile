@@ -1,5 +1,5 @@
 # The base image to use
-FROM node:18-alpine
+FROM node:18
 
 # The WORKDIR instruction sets the working directory
 # for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions 
@@ -12,7 +12,7 @@ COPY . .
 
 # The RUN instruction will execute any 
 # command in a new layer on top of the current image
-RUN npm ci
+RUN npm install
 
 # The CMD instruction provides default
 # execution command for a container
