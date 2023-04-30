@@ -3,28 +3,23 @@ Our app has progressed since our first lesson, and now, sqlite file is just not 
 
 ## Run this (From inside /app folder) to build our new app:
 ```sh
-$ docker build -t our-first-dockerfile-mysql .
+$ docker build -t our-first-lite-dockerfile-mysql .
 ```
 
+## Now let's compare sizes of our new docker image compared to previous ones
 ```sh
-# create a user-defined bridge network for our app
-$ docker network create todo-app-network
+# to view a list of images and their sizes
+$ docker images
 
-# run mysql (-e is for passing environment variables)
-$ docker run -d \
-    --network todo-app-network --network-alias mysql \
-    -v todo-mysql-data:/var/lib/mysql \
-    -e MYSQL_ROOT_PASSWORD=secret \
-    -e MYSQL_DATABASE=todos \
-    mysql:8.0
+# now let's deep dive into our image layers
+# let's view the history on the previous image
+$ docker history our-first-dockerfile-mysql
 
-# now let's run our server on the network we created
-# notice that we pass mysql environment variable
-$ docker run -p 3000:3000 \
-  --network todo-app-network \
-  -e MYSQL_HOST=mysql \
-  -e MYSQL_USER=root \
-  -e MYSQL_PASSWORD=secret \
-  -e MYSQL_DB=todos \
-  our-first-dockerfile-mysql
+# and compare it to the history of our current image
+$ docker history our-first-lite-dockerfile-mysql
+```
+
+## Just to make sure it's still works
+```sh
+$ docker-compose up
 ```
