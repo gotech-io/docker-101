@@ -1,5 +1,5 @@
 # The base image to use
-FROM node:18
+FROM node:18-alpine
 
 # The WORKDIR instruction sets the working directory
 # for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions 
